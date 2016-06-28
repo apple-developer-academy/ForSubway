@@ -33,12 +33,9 @@ public class Notification{
         
         let arrayNotification = UIApplication.sharedApplication().scheduledLocalNotifications
         
-        for notification in arrayNotification!{
+        for notification in arrayNotification! where station.arrivalTime == notification.fireDate || station.departureTime == notification.fireDate {
             
-            if station.arrivalTime == notification.fireDate || station.departureTime == notification.fireDate{
-                
-                UIApplication.sharedApplication().cancelLocalNotification(notification)
-            }
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
         }
         
     }

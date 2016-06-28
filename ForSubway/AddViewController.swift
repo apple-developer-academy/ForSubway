@@ -75,15 +75,15 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
             let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
             
-            let station = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            let station = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) as! Station
             
-            station.setValue(textName.text, forKey: "name")
+            station.name = textName.text
             
             let arrivalTime = saveDateNotification(textArrivalTime.text!)
-            station.setValue(arrivalTime! , forKey: "arrivalTime")
+            station.arrivalTime = arrivalTime
             
             let departureTime = saveDateNotification(textDepartureTime.text!)
-            station.setValue(departureTime! , forKey: "departureTime")
+            station.departureTime = departureTime
             
             do {
                 try managedContext.save()
@@ -91,7 +91,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
                 print("Could not save \(error), \(error.userInfo)")
             }
             
-//            notification?.createNotification(station)
+            notification?.createNotification(station)
             
             self.navigationController?.popViewControllerAnimated(true);
         }
@@ -101,16 +101,16 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         let currentDate = NSDate()
         
         let formatterDay = NSDateFormatter()
-        formatterDay.dateFormat = "yyyy-MM-dd"
+        formatterDay.dateFormat = "dd-MM-yyyy"
         
         let day = formatterDay.stringFromDate(currentDate)
         
-        let stringDate = "\(day) \(hour):00 +0000"
+        let stringDate = "\(day) \(hour)"
         
         print(stringDate)
         
         let formatterDate = NSDateFormatter()
-        formatterDate.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        formatterDate.dateFormat = "dd-MM-yyyy HH:mm"
         
         let dateNotification = formatterDate.dateFromString(stringDate)
         
