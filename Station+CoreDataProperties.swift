@@ -2,7 +2,7 @@
 //  Station+CoreDataProperties.swift
 //  ForSubway
 //
-//  Created by Pedro Albuquerque on 27/06/16.
+//  Created by Gabriel Cavalcante on 27/06/16.
 //  Copyright © 2016 Gabriel Cavalcante. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

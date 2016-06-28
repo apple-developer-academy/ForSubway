@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1bi-R7-0SN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1bi-R7-0SN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="414" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bDw-tY-VwL" id="jjN-LF-I51">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af6-o6-Evs">
@@ -155,6 +155,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="h5g-Mc-FR1" id="h5H-pX-qLY"/>
+                        <outlet property="trashBar" destination="XtC-vY-Fxc" id="b62-54-D2e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -228,7 +229,14 @@
                             <constraint firstItem="vEd-ld-p86" firstAttribute="leading" secondItem="UYD-6m-pqv" secondAttribute="leading" constant="-195" id="we8-bT-YOg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Station" id="qD4-xE-bBh"/>
+                    <navigationItem key="navigationItem" title="Add Station" id="qD4-xE-bBh">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="0Ue-cf-ItF">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="Zqg-Ff-Z4I" id="AvT-N8-CSp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textArrivalTime" destination="vEd-ld-p86" id="7fL-Vl-kcJ"/>
                         <outlet property="textDepartureTime" destination="UYD-6m-pqv" id="aXK-kF-aDa"/>

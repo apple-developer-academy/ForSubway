@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ForSubway
 //
-//  Created by Pedro Albuquerque on 27/06/16.
+//  Created by Gabriel Cavalcante on 27/06/16.
 //  Copyright © 2016 Gabriel Cavalcante. All rights reserved.
 //
 
@@ -13,14 +13,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var trashBar: UIBarButtonItem!
+    
     var allStations = [Station]()
+    
+    var notification = Notification()
+    
+    //var stationDAO = StationDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.allowsSelection = false;
         
-        self.populateTable()
+        populateTable()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,14 +37,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(true)
     
         self.populateTable()
+        tableView.reloadData()
+    }
+    
+    func checkTrash() {
+        if allStations.isEmpty{
+            trashBar.enabled = false
+        }else{
+            trashBar.enabled = true
+        }
     }
     
     func populateTable(){
-        let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
         let fetchRequest = NSFetchRequest(entityName: "Station")
         
         do {
@@ -49,7 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-        tableView.reloadData()
+        checkTrash()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -68,8 +80,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let formatter = NSDateFormatter()
         formatter.dateFormat = ("HH:mm")
         
-        cell.labelArrivalTime.text = formatter.stringFromDate(station.arrivalTime!)
-        cell.labelDepartureTime.text = formatter.stringFromDate(station.departureTime!)
+        if let arrivalTime = station.arrivalTime, departureTime = station.departureTime{
+            cell.labelArrivalTime.text = formatter.stringFromDate(arrivalTime)
+            cell.labelDepartureTime.text = formatter.stringFromDate(departureTime)
+        }
         
         return cell
     }
@@ -82,10 +96,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         switch editingStyle {
         case .Delete:
             
-            // remove the deleted item from the model
             let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             
             let context: NSManagedObjectContext = appDelegate.managedObjectContext
+            
+            notification.cancelNotification(allStations[indexPath.row].arrivalTime!, departure: allStations[indexPath.row].departureTime!)
             
             context.deleteObject(allStations[indexPath.row])
             allStations.removeAtIndex(indexPath.row)
@@ -96,13 +111,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             }
             
-            // remove the deleted item from the `UITableView`
+            //stationDAO.remove(allStations[indexPath.row])
+            
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         default:
             return
         }
     }
-
+    
     @IBAction func removeAll(sender: AnyObject) {
         
         let alert = UIAlertController(title: "Remove All Stations", message: "Would you like to remove all Stations from Subway?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -125,13 +141,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Detele all data in Station error : \(error) \(error.userInfo)")
             }
             
+            self.notification.cancelAllNotifications()
+            
             self.populateTable()
+            self.tableView.reloadData()
             
         }))
-
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         
         self.presentViewController(alert, animated: true, completion: nil)
+        
     }
 }
 

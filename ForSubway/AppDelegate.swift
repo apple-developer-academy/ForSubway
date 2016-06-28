@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ForSubway
 //
-//  Created by Pedro Albuquerque on 27/06/16.
+//  Created by Gabriel Cavalcante on 27/06/16.
 //  Copyright © 2016 Gabriel Cavalcante. All rights reserved.
 //
 
@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        //navigationController?.navigationItem.backBarButtonItem?.title = ""
-        //navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
         
         //Necessário registrar as notificacoes, o que vai ser usado nelas e de quais tipos vao ser.
         
@@ -61,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //O usuario encontra-se dentro do app
         }
         
-        self.takeActionWithNotification(notification)
+        //self.takeActionWithNotification(notification)
         
     }
     

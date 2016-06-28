@@ -25,6 +25,7 @@
 		7138FCE51D219B0F00644998 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCE11D219B0F00644998 /* Station.swift */; };
 		7138FCE91D21A24C00644998 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCE81D21A24C00644998 /* AddViewController.swift */; };
 		7138FCEB1D21A91000644998 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCEA1D21A91000644998 /* CellViewController.swift */; };
+		716F1AAE1D22E7BF00E5B856 /* StationDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7138FCE11D219B0F00644998 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Station.swift; path = ../Station.swift; sourceTree = "<group>"; };
 		7138FCE81D21A24C00644998 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7138FCEA1D21A91000644998 /* CellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
+		716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,18 +134,14 @@
 			isa = PBXGroup;
 			children = (
 				7138FC9F1D2197B100644998 /* AppDelegate.swift */,
-				084E18991D2235E90009B517 /* Notification.swift */,
-				7138FCA11D2197B100644998 /* ViewController.swift */,
-				7138FCE81D21A24C00644998 /* AddViewController.swift */,
-				7138FCEA1D21A91000644998 /* CellViewController.swift */,
+				71C1EEEE1D231B04003E0B71 /* Model */,
+				71C1EEEF1D231B0C003E0B71 /* View */,
+				71C1EEF01D231B15003E0B71 /* Controller */,
 				7138FCA31D2197B100644998 /* Main.storyboard */,
 				7138FCA91D2197B100644998 /* Assets.xcassets */,
 				7138FCAB1D2197B100644998 /* LaunchScreen.storyboard */,
 				7138FCAE1D2197B100644998 /* Info.plist */,
-				7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */,
-				7138FCE11D219B0F00644998 /* Station.swift */,
 				7138FCA61D2197B100644998 /* ForSubway.xcdatamodeld */,
-				082492C01D21FF0A00C86F05 /* PopDatePicker */,
 			);
 			path = ForSubway;
 			sourceTree = "<group>";
@@ -164,6 +162,35 @@
 				7138FCC41D2197B100644998 /* Info.plist */,
 			);
 			path = ForSubwayUITests;
+			sourceTree = "<group>";
+		};
+		71C1EEEE1D231B04003E0B71 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */,
+				7138FCE11D219B0F00644998 /* Station.swift */,
+				716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		71C1EEEF1D231B0C003E0B71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7138FCA11D2197B100644998 /* ViewController.swift */,
+				7138FCE81D21A24C00644998 /* AddViewController.swift */,
+				7138FCEA1D21A91000644998 /* CellViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		71C1EEF01D231B15003E0B71 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				084E18991D2235E90009B517 /* Notification.swift */,
+				082492C01D21FF0A00C86F05 /* PopDatePicker */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +332,7 @@
 				7138FCA21D2197B100644998 /* ViewController.swift in Sources */,
 				082492C41D2207B600C86F05 /* Type.swift in Sources */,
 				7138FCE41D219B0F00644998 /* Station+CoreDataProperties.swift in Sources */,
+				716F1AAE1D22E7BF00E5B856 /* StationDAO.swift in Sources */,
 				7138FCA81D2197B100644998 /* ForSubway.xcdatamodeld in Sources */,
 				084E189A1D2235E90009B517 /* Notification.swift in Sources */,
 				082492C21D2201A600C86F05 /* DateUtils.swift in Sources */,

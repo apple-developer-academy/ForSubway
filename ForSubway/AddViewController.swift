@@ -2,7 +2,7 @@
 //  AddViewController.swift
 //  ForSubway
 //
-//  Created by Pedro Albuquerque on 27/06/16.
+//  Created by Gabriel Cavalcante on 27/06/16.
 //  Copyright © 2016 Gabriel Cavalcante. All rights reserved.
 //
 
@@ -19,7 +19,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     var popDatePicker: PopDatePicker?
     
-    var notification: Notification?
+    var notification = Notification()
+    
+    var stationDAO = StationDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             formatter.dateStyle = .NoStyle
             formatter.timeStyle = .MediumStyle
             
-            let initDate: NSDate? = formatter.dateFromString(textField.text!)
+            let initDate = NSDate()
             let dataChangedCallback : PopDatePicker.PopDatePickerCallback = { (newDate : NSDate, forTextField : UITextField) -> () in
                 
                 forTextField.text = (newDate.ToDateMediumString() ?? "?") as String
@@ -52,8 +54,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
             popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.Time, dateMin: "27-06-2016 06:00", dateMax: "10-07-2050 23:00", dataChanged: dataChangedCallback)
             return false
-        }
-        else {
+        } else {
             return true
         }
     }
@@ -69,31 +70,26 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             
         }else{
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            let managedContext = appDelegate.managedObjectContext
-            
-            let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
-            
-            let station = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext) as! Station
-            
-            station.name = textName.text
             
             let arrivalTime = saveDateNotification(textArrivalTime.text!)
-            station.arrivalTime = arrivalTime
-            
             let departureTime = saveDateNotification(textDepartureTime.text!)
-            station.departureTime = departureTime
             
-            do {
-                try managedContext.save()
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
+            stationDAO.create(textName.text!, arrivalTime: arrivalTime!, departureTime: departureTime!)
+            
+            print("Arrival Time = \(arrivalTime)")
+            print("Departure Time = \(departureTime)")
+            
+            notification.createNotification(arrivalTime!, departure: departureTime!)
+            
+            if let navigation = self.navigationController {
+                navigation.popViewControllerAnimated(true)
             }
-            
-            notification?.createNotification(station)
-            
-            self.navigationController?.popViewControllerAnimated(true);
+        }
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        if let navigation = self.navigationController {
+            navigation.popViewControllerAnimated(true)
         }
     }
     
