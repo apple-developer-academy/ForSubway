@@ -105,23 +105,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBAction func removeAll(sender: AnyObject) {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Station")
-        fetchRequest.returnsObjectsAsFaults = false
+        let alert = UIAlertController(title: "Remove All Stations", message: "Would you like to remove all Stations from Subway?", preferredStyle: UIAlertControllerStyle.Alert)
         
-        do{
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            for managedObject in results
-            {
-                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-                managedContext.deleteObject(managedObjectData)
+        alert.addAction(UIAlertAction(title: "Remove", style: UIAlertActionStyle.Destructive, handler:{ action in
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            let fetchRequest = NSFetchRequest(entityName: "Station")
+            fetchRequest.returnsObjectsAsFaults = false
+            
+            do{
+                let results = try managedContext.executeFetchRequest(fetchRequest)
+                for managedObject in results
+                {
+                    let station:Station = managedObject as! Station
+                    managedContext.deleteObject(station)
+                }
+            } catch let error as NSError {
+                print("Detele all data in Station error : \(error) \(error.userInfo)")
             }
-        } catch let error as NSError {
-            print("Detele all data in Station error : \(error) \(error.userInfo)")
-        }
+            
+            self.populateTable()
+            
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         
-        self.populateTable()
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

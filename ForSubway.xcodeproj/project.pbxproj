@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082492BB1D21FEDD00C86F05 /* PopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492BA1D21FEDD00C86F05 /* PopDatePicker.swift */; };
+		082492BE1D21FEED00C86F05 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492BC1D21FEED00C86F05 /* PopDateViewController.swift */; };
+		082492BF1D21FEED00C86F05 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082492BD1D21FEED00C86F05 /* PopDateViewController.xib */; };
+		082492C21D2201A600C86F05 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492C11D2201A600C86F05 /* DateUtils.swift */; };
+		082492C41D2207B600C86F05 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492C31D2207B600C86F05 /* Type.swift */; };
 		7138FCA01D2197B100644998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FC9F1D2197B100644998 /* AppDelegate.swift */; };
 		7138FCA21D2197B100644998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCA11D2197B100644998 /* ViewController.swift */; };
 		7138FCA51D2197B100644998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7138FCA31D2197B100644998 /* Main.storyboard */; };
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		082492BA1D21FEDD00C86F05 /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDatePicker.swift; sourceTree = "<group>"; };
+		082492BC1D21FEED00C86F05 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
+		082492BD1D21FEED00C86F05 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
+		082492C11D2201A600C86F05 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		082492C31D2207B600C86F05 /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		7138FC9C1D2197B100644998 /* ForSubway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForSubway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138FC9F1D2197B100644998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7138FCA11D2197B100644998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +94,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		082492C01D21FF0A00C86F05 /* PopDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				082492C11D2201A600C86F05 /* DateUtils.swift */,
+				082492BA1D21FEDD00C86F05 /* PopDatePicker.swift */,
+				082492BC1D21FEED00C86F05 /* PopDateViewController.swift */,
+				082492C31D2207B600C86F05 /* Type.swift */,
+				082492BD1D21FEED00C86F05 /* PopDateViewController.xib */,
+			);
+			name = PopDatePicker;
+			sourceTree = "<group>";
+		};
 		7138FC931D2197AF00644998 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +140,7 @@
 				7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */,
 				7138FCE11D219B0F00644998 /* Station.swift */,
 				7138FCA61D2197B100644998 /* ForSubway.xcdatamodeld */,
+				082492C01D21FF0A00C86F05 /* PopDatePicker */,
 			);
 			path = ForSubway;
 			sourceTree = "<group>";
@@ -246,6 +269,7 @@
 			files = (
 				7138FCAD1D2197B100644998 /* LaunchScreen.storyboard in Resources */,
 				7138FCAA1D2197B100644998 /* Assets.xcassets in Resources */,
+				082492BF1D21FEED00C86F05 /* PopDateViewController.xib in Resources */,
 				7138FCA51D2197B100644998 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,10 +296,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7138FCE91D21A24C00644998 /* AddViewController.swift in Sources */,
+				082492BB1D21FEDD00C86F05 /* PopDatePicker.swift in Sources */,
+				082492BE1D21FEED00C86F05 /* PopDateViewController.swift in Sources */,
 				7138FCEB1D21A91000644998 /* CellViewController.swift in Sources */,
 				7138FCA21D2197B100644998 /* ViewController.swift in Sources */,
+				082492C41D2207B600C86F05 /* Type.swift in Sources */,
 				7138FCE41D219B0F00644998 /* Station+CoreDataProperties.swift in Sources */,
 				7138FCA81D2197B100644998 /* ForSubway.xcdatamodeld in Sources */,
+				082492C21D2201A600C86F05 /* DateUtils.swift in Sources */,
 				7138FCA01D2197B100644998 /* AppDelegate.swift in Sources */,
 				7138FCE51D219B0F00644998 /* Station.swift in Sources */,
 			);
@@ -505,6 +533,7 @@
 				7138FCC91D2197B100644998 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7138FCCA1D2197B100644998 /* Build configuration list for PBXNativeTarget "ForSubwayTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +542,7 @@
 				7138FCCC1D2197B100644998 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7138FCCD1D2197B100644998 /* Build configuration list for PBXNativeTarget "ForSubwayUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +551,7 @@
 				7138FCCF1D2197B100644998 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
