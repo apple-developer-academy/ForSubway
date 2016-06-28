@@ -12,6 +12,7 @@
 		082492BF1D21FEED00C86F05 /* PopDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082492BD1D21FEED00C86F05 /* PopDateViewController.xib */; };
 		082492C21D2201A600C86F05 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492C11D2201A600C86F05 /* DateUtils.swift */; };
 		082492C41D2207B600C86F05 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082492C31D2207B600C86F05 /* Type.swift */; };
+		084E189A1D2235E90009B517 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E18991D2235E90009B517 /* Notification.swift */; };
 		7138FCA01D2197B100644998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FC9F1D2197B100644998 /* AppDelegate.swift */; };
 		7138FCA21D2197B100644998 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCA11D2197B100644998 /* ViewController.swift */; };
 		7138FCA51D2197B100644998 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7138FCA31D2197B100644998 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		082492BD1D21FEED00C86F05 /* PopDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopDateViewController.xib; sourceTree = "<group>"; };
 		082492C11D2201A600C86F05 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		082492C31D2207B600C86F05 /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		084E18991D2235E90009B517 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7138FC9C1D2197B100644998 /* ForSubway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForSubway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138FC9F1D2197B100644998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7138FCA11D2197B100644998 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7138FC9F1D2197B100644998 /* AppDelegate.swift */,
+				084E18991D2235E90009B517 /* Notification.swift */,
 				7138FCA11D2197B100644998 /* ViewController.swift */,
 				7138FCE81D21A24C00644998 /* AddViewController.swift */,
 				7138FCEA1D21A91000644998 /* CellViewController.swift */,
@@ -303,6 +306,7 @@
 				082492C41D2207B600C86F05 /* Type.swift in Sources */,
 				7138FCE41D219B0F00644998 /* Station+CoreDataProperties.swift in Sources */,
 				7138FCA81D2197B100644998 /* ForSubway.xcdatamodeld in Sources */,
+				084E189A1D2235E90009B517 /* Notification.swift in Sources */,
 				082492C21D2201A600C86F05 /* DateUtils.swift in Sources */,
 				7138FCA01D2197B100644998 /* AppDelegate.swift in Sources */,
 				7138FCE51D219B0F00644998 /* Station.swift in Sources */,

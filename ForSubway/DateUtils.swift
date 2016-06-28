@@ -17,4 +17,5 @@ extension NSDate {
         formatter.dateFormat = "HH:mm"
         return formatter.stringFromDate(self)
     }
+    
 }

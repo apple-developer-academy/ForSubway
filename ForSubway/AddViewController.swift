@@ -19,10 +19,13 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     var popDatePicker: PopDatePicker?
     
+    var notification: Notification?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationController?.navigationItem.backBarButtonItem?.title = ""
+        navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +50,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
                 
             }
             
-            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.Time, dateMin: "27-06-2016 06:00", dateMax: "10-07-2016 23:00", dataChanged: dataChangedCallback)
+            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.Time, dateMin: "27-06-2016 06:00", dateMax: "10-07-2050 23:00", dataChanged: dataChangedCallback)
             return false
         }
         else {
@@ -76,11 +79,11 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
             station.setValue(textName.text, forKey: "name")
             
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "HH:mm"
+            let arrivalTime = saveDateNotification(textArrivalTime.text!)
+            station.setValue(arrivalTime! , forKey: "arrivalTime")
             
-            station.setValue(formatter.dateFromString(textArrivalTime.text!), forKey: "arrivalTime")
-            station.setValue(formatter.dateFromString(textDepartureTime.text!), forKey: "departureTime")
+            let departureTime = saveDateNotification(textDepartureTime.text!)
+            station.setValue(departureTime! , forKey: "departureTime")
             
             do {
                 try managedContext.save()
@@ -88,7 +91,30 @@ class AddViewController: UIViewController, UITextFieldDelegate {
                 print("Could not save \(error), \(error.userInfo)")
             }
             
+//            notification?.createNotification(station)
+            
             self.navigationController?.popViewControllerAnimated(true);
         }
     }
+    
+    func saveDateNotification(hour: String) -> NSDate? {
+        let currentDate = NSDate()
+        
+        let formatterDay = NSDateFormatter()
+        formatterDay.dateFormat = "yyyy-MM-dd"
+        
+        let day = formatterDay.stringFromDate(currentDate)
+        
+        let stringDate = "\(day) \(hour):00 +0000"
+        
+        print(stringDate)
+        
+        let formatterDate = NSDateFormatter()
+        formatterDate.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+        
+        let dateNotification = formatterDate.dateFromString(stringDate)
+        
+        return dateNotification
+    }
+
 }

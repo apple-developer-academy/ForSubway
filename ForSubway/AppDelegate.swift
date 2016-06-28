@@ -18,9 +18,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch
         
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        //navigationController?.navigationItem.backBarButtonItem?.title = ""
+        //navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+        
+        //Necessário registrar as notificacoes, o que vai ser usado nelas e de quais tipos vao ser.
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+    
+        createLocalNotification()
         
         return true
     }
+    
+    func createLocalNotification(){
+    
+        let localNotification = UILocalNotification()
+        
+        //Criando o momento que a notificacao ira aparecer, no caso 10 segundos depois do app rodar
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        
+        //Inicializando o numero de 'insignias' com 1, podendo incrementar
+        localNotification.applicationIconBadgeNumber = 1
+        
+        //Criando um som padrao para a notificacao
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        
+        //UserInfo pode ser utilizada guardar informacoes do usuario para outras acoes da notificacao, como colocar um alertView logo apos clicar na notificacao
+        localNotification.userInfo = ["messege" : "Check Out Im IN!"]
+        
+        //Essa e a parte que vai aparecer no corpo da notificacao
+        localNotification.alertBody = "Check out Im in!"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    //Quando o usuario clica na notificacao, voce pode criar acoes dentro do aplicativo
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        if application.applicationState == .Active {
+            //O usuario encontra-se dentro do app
+        }
+        
+        self.takeActionWithNotification(notification)
+        
+    }
+    
+    func takeActionWithNotification(notification: UILocalNotification){
+        let notificationMessege = notification.userInfo!["messege"] as! String
+        let userName = "Gabriel"
+        
+        let alertController = UIAlertController(title: "Hey \(userName)", message: notificationMessege, preferredStyle: .Alert)
+        let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil)
+        
+        alertController.addAction(alertControllerOK)
+        
+        self.window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
