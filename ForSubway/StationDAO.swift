@@ -9,62 +9,53 @@
 import UIKit
 import CoreData
 
-public class StationDAO{
+public class StationDAO {
     
     private var appDelegate: AppDelegate
     private var managedContext: NSManagedObjectContext
-    private var entity: NSEntityDescription
-    private var fetchRequest: NSFetchRequest
-    private var station: Station
     
-    init(){
+    init() {
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext
-        entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)!
-        fetchRequest = NSFetchRequest(entityName: "Station")
-        station = Station(entity: entity, insertIntoManagedObjectContext: managedContext)
     }
     
-    func fetch() -> [Station]{
+    func fetchAllStations() -> [Station] {
         
-        var allStations = [Station]()
+        var allStations: [Station] = []
         
         do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-            allStations = results as! [Station]
+            let fetchRequest = NSFetchRequest(entityName: "Station")
+            allStations = try managedContext.executeFetchRequest(fetchRequest) as! [Station]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-
         
         return allStations
     }
     
-    func create(name: String, arrivalTime: NSDate, departureTime: NSDate){
+    func create(name: String, arrivalTime: NSDate, departureTime: NSDate) {
+        let description = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)!
+        let station = Station(entity: description, insertIntoManagedObjectContext: managedContext)
         
         station.name = name
-        
         station.arrivalTime = arrivalTime
-        
         station.departureTime = departureTime
         
         saveContext()
     }
     
-    func remove(station: Station){
-        
+    func remove(station: Station) {
         managedContext.deleteObject(station)
-        
         saveContext()
-    
     }
     
-    func removeAll(){
-        fetchRequest.returnsObjectsAsFaults = false
+    func removeAll() {
+        let fetchRequest = NSFetchRequest(entityName: "Station")
+        fetchRequest.returnsObjectsAsFaults = true
         
         do{
             let results = try managedContext.executeFetchRequest(fetchRequest)
+            
             for managedObject in results
             {
                 let station:Station = managedObject as! Station
@@ -77,12 +68,11 @@ public class StationDAO{
         saveContext()
     }
     
-    func saveContext(){
+    func saveContext() {
         do {
             try managedContext.save()
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
     }
-
 }

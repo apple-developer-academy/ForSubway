@@ -21,7 +21,6 @@
 		7138FCAD1D2197B100644998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7138FCAB1D2197B100644998 /* LaunchScreen.storyboard */; };
 		7138FCB81D2197B100644998 /* ForSubwayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCB71D2197B100644998 /* ForSubwayTests.swift */; };
 		7138FCC31D2197B100644998 /* ForSubwayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCC21D2197B100644998 /* ForSubwayUITests.swift */; };
-		7138FCE41D219B0F00644998 /* Station+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */; };
 		7138FCE51D219B0F00644998 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCE11D219B0F00644998 /* Station.swift */; };
 		7138FCE91D21A24C00644998 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCE81D21A24C00644998 /* AddViewController.swift */; };
 		7138FCEB1D21A91000644998 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7138FCEA1D21A91000644998 /* CellViewController.swift */; };
@@ -66,7 +65,6 @@
 		7138FCBE1D2197B100644998 /* ForSubwayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForSubwayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7138FCC21D2197B100644998 /* ForSubwayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForSubwayUITests.swift; sourceTree = "<group>"; };
 		7138FCC41D2197B100644998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Station+CoreDataProperties.swift"; path = "../Station+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7138FCE11D219B0F00644998 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Station.swift; path = ../Station.swift; sourceTree = "<group>"; };
 		7138FCE81D21A24C00644998 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7138FCEA1D21A91000644998 /* CellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		71C1EEEE1D231B04003E0B71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7138FCE01D219B0F00644998 /* Station+CoreDataProperties.swift */,
 				7138FCE11D219B0F00644998 /* Station.swift */,
 				716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */,
 			);
@@ -331,7 +328,6 @@
 				7138FCEB1D21A91000644998 /* CellViewController.swift in Sources */,
 				7138FCA21D2197B100644998 /* ViewController.swift in Sources */,
 				082492C41D2207B600C86F05 /* Type.swift in Sources */,
-				7138FCE41D219B0F00644998 /* Station+CoreDataProperties.swift in Sources */,
 				716F1AAE1D22E7BF00E5B856 /* StationDAO.swift in Sources */,
 				7138FCA81D2197B100644998 /* ForSubway.xcdatamodeld in Sources */,
 				084E189A1D2235E90009B517 /* Notification.swift in Sources */,

@@ -11,5 +11,7 @@ import CoreData
 
 @objc(Station)
 class Station: NSManagedObject {
-
+    @NSManaged var arrivalTime: NSDate
+    @NSManaged var departureTime: NSDate
+    @NSManaged var name: String
 }

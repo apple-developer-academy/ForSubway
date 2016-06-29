@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
         
         //Inicializando o numero de 'insignias' com 1, podendo incrementar
-        localNotification.applicationIconBadgeNumber = 1
+        localNotification.applicationIconBadgeNumber = 0
         
         //Criando um som padrao para a notificacao
         localNotification.soundName = UILocalNotificationDefaultSoundName

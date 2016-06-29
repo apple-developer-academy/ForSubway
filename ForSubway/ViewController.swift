@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var notification = Notification()
     
-    //var stationDAO = StationDAO()
+    var stationDAO = StationDAO()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,17 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func populateTable(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Station")
-        
-        do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
-            allStations = results as! [Station]
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
+        allStations = stationDAO.fetchAllStations()
         
         checkTrash()
     }
@@ -80,10 +70,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let formatter = NSDateFormatter()
         formatter.dateFormat = ("HH:mm")
         
-        if let arrivalTime = station.arrivalTime, departureTime = station.departureTime{
-            cell.labelArrivalTime.text = formatter.stringFromDate(arrivalTime)
-            cell.labelDepartureTime.text = formatter.stringFromDate(departureTime)
-        }
+        cell.labelArrivalTime.text = formatter.stringFromDate(station.arrivalTime)
+        cell.labelDepartureTime.text = formatter.stringFromDate(station.departureTime)
         
         return cell
     }
@@ -95,28 +83,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
+            let station = allStations[indexPath.row]
             
-            let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            let context: NSManagedObjectContext = appDelegate.managedObjectContext
-            
-            notification.cancelNotification(allStations[indexPath.row].arrivalTime!, departure: allStations[indexPath.row].departureTime!)
-            
-            context.deleteObject(allStations[indexPath.row])
             allStations.removeAtIndex(indexPath.row)
             
-            do {
-                try context.save()
-            } catch _ {
-            
-            }
-            
-            //stationDAO.remove(allStations[indexPath.row])
+            stationDAO.remove(station)
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
             checkTrash()
-            
         default:
             return
         }
@@ -127,22 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alert = UIAlertController(title: "Remove All Stations", message: "Would you like to remove all Stations from Subway?", preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Remove", style: UIAlertActionStyle.Destructive, handler:{ action in
-            
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedContext = appDelegate.managedObjectContext
-            let fetchRequest = NSFetchRequest(entityName: "Station")
-            fetchRequest.returnsObjectsAsFaults = false
-            
-            do{
-                let results = try managedContext.executeFetchRequest(fetchRequest)
-                for managedObject in results
-                {
-                    let station:Station = managedObject as! Station
-                    managedContext.deleteObject(station)
-                }
-            } catch let error as NSError {
-                print("Detele all data in Station error : \(error) \(error.userInfo)")
-            }
+            self.stationDAO.removeAll()
             
             self.notification.cancelAllNotifications()
             
