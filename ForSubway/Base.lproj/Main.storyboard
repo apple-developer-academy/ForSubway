@@ -174,59 +174,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Station" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-fL-Dpf">
-                                <rect key="frame" x="33" y="127" width="344" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Zqg-Ff-Z4I" id="5Dq-Rl-4l1"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ss-z9-mWm">
-                                <rect key="frame" x="150" y="287" width="110" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.57254901960000004" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="CNt-6y-XOp">
+                                <rect key="frame" x="20" y="457" width="374" height="74"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Station" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUf-fL-Dpf">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Zqg-Ff-Z4I" id="5Dq-Rl-4l1"/>
+                                        </connections>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="uDM-JM-hmd">
+                                        <rect key="frame" x="0.0" y="44" width="374" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Arrival Time" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="vEd-ld-p86">
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Zqg-Ff-Z4I" id="inB-mY-Lf4"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departure Time" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="UYD-6m-pqv">
+                                                <rect key="frame" x="212" y="0.0" width="162" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Zqg-Ff-Z4I" id="bKV-JR-nX3"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Subway" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-Ka-MEG">
+                                <rect key="frame" x="139" y="356" width="136" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="YjN-bz-W9V"/>
+                                    <constraint firstAttribute="width" constant="136" id="nF2-RC-isN"/>
                                 </constraints>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveAction:" destination="Zqg-Ff-Z4I" eventType="touchUpInside" id="JZ5-cp-21R"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Departure Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYD-6m-pqv">
-                                <rect key="frame" x="228" y="205" width="149" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Zqg-Ff-Z4I" id="bKV-JR-nX3"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Arrival Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEd-ld-p86">
-                                <rect key="frame" x="33" y="205" width="149" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Organize your time!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AKI-oz-bkW">
+                                <rect key="frame" x="76" y="401" width="262" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="metro" translatesAutoresizingMaskIntoConstraints="NO" id="GCu-92-jum">
+                                <rect key="frame" x="82" y="85" width="250" height="263"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="149" id="VCa-lA-MTV"/>
+                                    <constraint firstAttribute="height" constant="263" id="6xq-3c-IYt"/>
+                                    <constraint firstAttribute="width" constant="250" id="wJe-4J-e9b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Zqg-Ff-Z4I" id="inB-mY-Lf4"/>
-                                </connections>
-                            </textField>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92794471153846148" green="0.92794471153846148" blue="0.92794471153846148" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vEd-ld-p86" firstAttribute="centerX" secondItem="s6P-9v-Stq" secondAttribute="centerX" constant="-99.5" id="0Kd-e0-HVg"/>
-                            <constraint firstItem="vEd-ld-p86" firstAttribute="top" secondItem="i91-pF-mIJ" secondAttribute="bottom" constant="141" id="0Vt-6x-zih"/>
-                            <constraint firstItem="fUf-fL-Dpf" firstAttribute="leading" secondItem="vEd-ld-p86" secondAttribute="leading" id="2sy-Qu-dqg"/>
-                            <constraint firstItem="5ss-z9-mWm" firstAttribute="top" secondItem="UYD-6m-pqv" secondAttribute="bottom" constant="52" id="9fp-Fv-hsJ"/>
-                            <constraint firstItem="fUf-fL-Dpf" firstAttribute="trailing" secondItem="UYD-6m-pqv" secondAttribute="trailing" id="X8a-k1-mLp"/>
-                            <constraint firstItem="UYD-6m-pqv" firstAttribute="top" secondItem="vEd-ld-p86" secondAttribute="bottom" constant="-30" id="Xqt-Pn-ao0"/>
-                            <constraint firstItem="vEd-ld-p86" firstAttribute="trailing" secondItem="UYD-6m-pqv" secondAttribute="trailing" constant="-195" id="jCj-HA-fpM"/>
-                            <constraint firstItem="UYD-6m-pqv" firstAttribute="centerX" secondItem="5ss-z9-mWm" secondAttribute="centerX" constant="97.5" id="kqH-qm-qsk"/>
-                            <constraint firstItem="UYD-6m-pqv" firstAttribute="top" secondItem="fUf-fL-Dpf" secondAttribute="bottom" constant="48" id="l5B-uY-9jM"/>
-                            <constraint firstItem="vEd-ld-p86" firstAttribute="leading" secondItem="UYD-6m-pqv" secondAttribute="leading" constant="-195" id="we8-bT-YOg"/>
+                            <constraint firstItem="GCu-92-jum" firstAttribute="top" secondItem="i91-pF-mIJ" secondAttribute="bottom" constant="21" id="5rN-ym-FfF"/>
+                            <constraint firstItem="AKI-oz-bkW" firstAttribute="top" secondItem="tt7-Ka-MEG" secondAttribute="bottom" constant="17" id="AtB-kk-9vv"/>
+                            <constraint firstItem="CNt-6y-XOp" firstAttribute="leading" secondItem="s6P-9v-Stq" secondAttribute="leadingMargin" id="EI1-Cz-eGP"/>
+                            <constraint firstItem="tt7-Ka-MEG" firstAttribute="top" secondItem="GCu-92-jum" secondAttribute="bottom" constant="8" id="SUe-DV-z5G"/>
+                            <constraint firstItem="tt7-Ka-MEG" firstAttribute="centerX" secondItem="AKI-oz-bkW" secondAttribute="centerX" id="SZp-yX-MkU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CNt-6y-XOp" secondAttribute="trailing" id="U6c-dF-vBb"/>
+                            <constraint firstItem="AKI-oz-bkW" firstAttribute="leading" secondItem="s6P-9v-Stq" secondAttribute="leadingMargin" constant="56" id="XXn-gQ-73N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AKI-oz-bkW" secondAttribute="trailing" constant="56" id="doj-UY-qh6"/>
+                            <constraint firstItem="GCu-92-jum" firstAttribute="centerX" secondItem="s6P-9v-Stq" secondAttribute="centerX" id="ich-fu-nca"/>
+                            <constraint firstItem="CNt-6y-XOp" firstAttribute="top" secondItem="AKI-oz-bkW" secondAttribute="bottom" constant="24" id="rvG-nT-YUu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Station" id="qD4-xE-bBh">
@@ -236,8 +260,15 @@
                                 <action selector="cancelAction:" destination="Zqg-Ff-Z4I" id="AvT-N8-CSp"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="bcW-xK-ael">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveAction:" destination="Zqg-Ff-Z4I" id="ZGj-Pi-tOY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageSubway" destination="GCu-92-jum" id="p64-wt-ZQI"/>
                         <outlet property="textArrivalTime" destination="vEd-ld-p86" id="7fL-Vl-kcJ"/>
                         <outlet property="textDepartureTime" destination="UYD-6m-pqv" id="aXK-kF-aDa"/>
                         <outlet property="textName" destination="fUf-fL-Dpf" id="31L-rC-sfH"/>
@@ -269,4 +300,7 @@
             <point key="canvasLocation" x="513" y="306"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="metro" width="1024" height="1024"/>
+    </resources>
 </document>

@@ -10,49 +10,45 @@ import UIKit
 import CoreData
 
 class AddViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var imageSubway: UIImageView!
     
     @IBOutlet weak var textArrivalTime: UITextField!
-    
     @IBOutlet weak var textDepartureTime: UITextField!
-    
     @IBOutlet weak var textName: UITextField!
     
     var popDatePicker: PopDatePicker?
-    
-    var notification = Notification()
-    
     var stationDAO = StationDAO()
+    var notification = Notification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationItem.backBarButtonItem?.title = ""
-        navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
+        imageSubway.layer.cornerRadius = imageSubway.frame.size.width/2
+        imageSubway.clipsToBounds = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //Utilizando Text Field Delegate para chamar o Pop Date Picker
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        
         if textField == textArrivalTime || textField == textDepartureTime{
             
             popDatePicker = PopDatePicker(forTextField: textField)
             textField.resignFirstResponder()
             
             let formatter = NSDateFormatter()
-            formatter.dateStyle = .NoStyle
+            formatter.dateStyle = .MediumStyle
             formatter.timeStyle = .MediumStyle
             
             let initDate = NSDate()
             let dataChangedCallback : PopDatePicker.PopDatePickerCallback = { (newDate : NSDate, forTextField : UITextField) -> () in
-                
                 forTextField.text = (newDate.ToDateMediumString() ?? "?") as String
-                
             }
             
-            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.Time, dateMin: "27-06-2016 06:00", dateMax: "10-07-2050 23:00", dataChanged: dataChangedCallback)
+            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.DateAndTime, dateMin: "27-06-2016 06:00", dateMax: "10-07-2050 23:00", dataChanged: dataChangedCallback)
+            
             return false
         } else {
             return true
@@ -61,54 +57,45 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveAction(sender: AnyObject) {
         
-        if textDepartureTime.text == "" || textName.text == "" || textArrivalTime.text == ""{
-        
+        //Verificando se os campos estao preenchidos e setando Alert Controller
+        if textDepartureTime.text == "" || textName.text == "" || textArrivalTime.text == "" {
             let alert = UIAlertController(title: "Empty TextField", message: "Fill correctly the empty space.", preferredStyle: UIAlertControllerStyle.Alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             
             self.presentViewController(alert, animated: true, completion: nil)
-            
-        }else{
-            
+        } else {
             let arrivalTime = saveDateNotification(textArrivalTime.text!)
             let departureTime = saveDateNotification(textDepartureTime.text!)
             
             stationDAO.create(textName.text!, arrivalTime: arrivalTime!, departureTime: departureTime!)
             
-            print("Arrival Time = \(arrivalTime)")
-            print("Departure Time = \(departureTime)")
+            ///////////////Criar a notificacao da hora de chegada e de partida///////////////
             
-            notification.createNotification(arrivalTime!, departure: departureTime!)
+           
             
+            /////////////////////////////////////////////////////////////////////////////////
+            
+            //Dando pop na Push View
             if let navigation = self.navigationController {
                 navigation.popViewControllerAnimated(true)
             }
         }
     }
     
+    //Cancelando cadastro de Station
     @IBAction func cancelAction(sender: AnyObject) {
         if let navigation = self.navigationController {
             navigation.popViewControllerAnimated(true)
         }
     }
-    
-    func saveDateNotification(hour: String) -> NSDate? {
-        let currentDate = NSDate()
-        
-        let formatterDay = NSDateFormatter()
-        formatterDay.dateFormat = "dd-MM-yyyy"
-        
-        let day = formatterDay.stringFromDate(currentDate)
-        
-        let stringDate = "\(day) \(hour)"
-        
-        print(stringDate)
-        
+
+    //Salvando a data atraves do textField
+    func saveDateNotification(date: String) -> NSDate? {
         let formatterDate = NSDateFormatter()
         formatterDate.dateFormat = "dd-MM-yyyy HH:mm"
         
-        let dateNotification = formatterDate.dateFromString(stringDate)
+        let dateNotification = formatterDate.dateFromString(date)
         
         return dateNotification
     }

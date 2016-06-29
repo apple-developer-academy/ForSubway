@@ -14,7 +14,7 @@ extension NSDate {
     func ToDateMediumString() -> NSString? {
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "dd/MM/yyyy HH:mm"
         return formatter.stringFromDate(self)
     }
     

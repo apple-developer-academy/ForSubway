@@ -16,16 +16,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var trashBar: UIBarButtonItem!
     
     var allStations = [Station]()
-    
-    var notification = Notification()
-    
     var stationDAO = StationDAO()
+    var notification = Notification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.allowsSelection = false;
-        
         populateTable()
     }
 
@@ -35,11 +31,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-    
         self.populateTable()
         tableView.reloadData()
     }
     
+    //Chegando se existe dados na Table View
     func checkTrash() {
         if allStations.isEmpty{
             trashBar.enabled = false
@@ -48,6 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //Populando tabela atraves do Core Data
     func populateTable(){
         allStations = stationDAO.fetchAllStations()
         
@@ -60,7 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CellViewController
         
         let station = allStations[indexPath.row]
@@ -80,10 +76,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return true
     }
     
+    //Removendo linha da Table View com Editing Style
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
             let station = allStations[indexPath.row]
+            
+            /////////////Cancelar a notificacao da Station selecionada//////////////
+            
+            notification.cancelNotification(station.arrivalTime, departure: station.departureTime)
+            
+            ////////////////////////////////////////////////////////////////////////
             
             allStations.removeAtIndex(indexPath.row)
             
@@ -97,14 +100,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //Removendo todas as linhas da Table View
     @IBAction func removeAll(sender: AnyObject) {
-        
         let alert = UIAlertController(title: "Remove All Stations", message: "Would you like to remove all Stations from Subway?", preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: "Remove", style: UIAlertActionStyle.Destructive, handler:{ action in
             self.stationDAO.removeAll()
             
+            /////////////Cancelar todas notificacoes///////////////
+            
             self.notification.cancelAllNotifications()
+            
+            ///////////////////////////////////////////////////////
             
             self.populateTable()
             self.tableView.reloadData()
