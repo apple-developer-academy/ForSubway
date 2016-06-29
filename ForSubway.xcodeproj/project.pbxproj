@@ -101,7 +101,6 @@
 		082492C01D21FF0A00C86F05 /* PopDatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				082492C11D2201A600C86F05 /* DateUtils.swift */,
 				082492BA1D21FEDD00C86F05 /* PopDatePicker.swift */,
 				082492BC1D21FEED00C86F05 /* PopDateViewController.swift */,
 				082492C31D2207B600C86F05 /* Type.swift */,
@@ -188,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				084E18991D2235E90009B517 /* Notification.swift */,
+				082492C11D2201A600C86F05 /* DateUtils.swift */,
 				082492C01D21FF0A00C86F05 /* PopDatePicker */,
 			);
 			name = Controller;
@@ -481,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ForSubway/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielcavalcante.ForSubway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -494,6 +495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ForSubway/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielcavalcante.ForSubway;
 				PRODUCT_NAME = "$(TARGET_NAME)";

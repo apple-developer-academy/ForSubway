@@ -15,7 +15,7 @@ public class Notification{
         let notificationArrival:UILocalNotification = UILocalNotification()
         notificationArrival.fireDate = arrival
         notificationArrival.alertTitle = "Metro ForSubway!"
-        notificationArrival.alertBody = "Metro has come - \(arrival)"
+        notificationArrival.alertBody = "Metro has come at \(dateNotification(arrival))"
         notificationArrival.applicationIconBadgeNumber = (UIApplication.sharedApplication().scheduledLocalNotifications?.count)! + 1
         notificationArrival.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notificationArrival)
@@ -23,7 +23,7 @@ public class Notification{
         let notificationDeparture:UILocalNotification = UILocalNotification()
         notificationDeparture.fireDate = departure
         notificationDeparture.alertTitle = "Metro ForSubway!"
-        notificationDeparture.alertBody = "Metro is going - \(departure)"
+        notificationDeparture.alertBody = "Metro is going at \(dateNotification(departure))"
         notificationDeparture.applicationIconBadgeNumber = (UIApplication.sharedApplication().scheduledLocalNotifications?.count)! + 1
         notificationDeparture.soundName = UILocalNotificationDefaultSoundName
         UIApplication.sharedApplication().scheduleLocalNotification(notificationDeparture)
@@ -44,5 +44,11 @@ public class Notification{
     func cancelAllNotifications(){
         
         UIApplication.sharedApplication().cancelAllLocalNotifications()
+    }
+    
+    func dateNotification(date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm - dd/MM/yyyy"
+        return formatter.stringFromDate(date)
     }
 }

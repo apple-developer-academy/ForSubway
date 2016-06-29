@@ -114,6 +114,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //stationDAO.remove(allStations[indexPath.row])
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            checkTrash()
+            
         default:
             return
         }
