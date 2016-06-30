@@ -66,8 +66,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let formatter = NSDateFormatter()
         formatter.dateFormat = ("HH:mm")
         
-        cell.labelArrivalTime.text = formatter.stringFromDate(station.arrivalTime)
-        cell.labelDepartureTime.text = formatter.stringFromDate(station.departureTime)
+        var text = formatter.stringFromDate(station.arrivalTime)
+        print("TEXTTTTTTTTTT \(text)")
+        cell.labelArrivalTime.text = text
+        
+        text = formatter.stringFromDate(station.departureTime)
+        cell.labelDepartureTime.text = text
         
         return cell
     }
