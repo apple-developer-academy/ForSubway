@@ -12,7 +12,6 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var trashBar: UIBarButtonItem!
     
     var allStations = [Station]()
@@ -35,7 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    //Chegando se existe dados na Table View
+    //Chegando se existe dados na Table View e deixando a lixeira enable
     func checkTrash() {
         if allStations.isEmpty{
             trashBar.enabled = false
@@ -47,12 +46,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //Populando tabela atraves do Core Data
     func populateTable(){
         allStations = stationDAO.fetchAllStations()
-        
         checkTrash()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-    
         return allStations.count
     }
     
@@ -67,7 +64,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         formatter.dateFormat = ("HH:mm")
         
         var text = formatter.stringFromDate(station.arrivalTime)
-        print("TEXTTTTTTTTTT \(text)")
         cell.labelArrivalTime.text = text
         
         text = formatter.stringFromDate(station.departureTime)
@@ -88,7 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             /////////////Cancelar a notificacao da Station selecionada//////////////
             
-            notification.cancelNotification(station.arrivalTime, departure: station.departureTime)
+            
             
             ////////////////////////////////////////////////////////////////////////
             
@@ -113,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             /////////////Cancelar todas notificacoes///////////////
             
-            self.notification.cancelAllNotifications()
+            
             
             ///////////////////////////////////////////////////////
             

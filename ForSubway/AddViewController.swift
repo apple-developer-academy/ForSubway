@@ -23,6 +23,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Arredondando imagem do subway
         imageSubway.layer.cornerRadius = imageSubway.frame.size.width/2
         imageSubway.clipsToBounds = true
     }
@@ -47,7 +48,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
                 forTextField.text = (newDate.ToDateMediumString() ?? "?") as String
             }
             
-            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.DateAndTime, dateMin: "27-06-2016 06:00", dateMax: "10-07-2050 23:00", dataChanged: dataChangedCallback)
+            popDatePicker!.pick(self, initDate: initDate, modePicker: UIDatePickerMode.DateAndTime, dateMin: "27-06-2016 06:00", dateMax: "20-08-2016 23:00", dataChanged: dataChangedCallback)
             
             return false
         } else {
@@ -55,8 +56,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Salvando a Station e criando a notification
     @IBAction func saveAction(sender: AnyObject) {
-        
         //Verificando se os campos estao preenchidos e setando Alert Controller
         if textDepartureTime.text == "" || textName.text == "" || textArrivalTime.text == "" {
             let alert = UIAlertController(title: "Empty TextField", message: "Fill correctly the empty space.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -72,7 +73,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
             ///////////////Criar a notificacao da hora de chegada e de partida///////////////
             
-            notification.createNotification(arrivalTime!, departure: departureTime!)
+            
             
             /////////////////////////////////////////////////////////////////////////////////
             

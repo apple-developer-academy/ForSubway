@@ -14,13 +14,14 @@ public class StationDAO {
     private var appDelegate: AppDelegate
     private var managedContext: NSManagedObjectContext
     
+    //Inicializando AppDelegate e NSManagedObjectContext
     init() {
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         managedContext = appDelegate.managedObjectContext
     }
     
+    //Buscando todas Stations pelo NSFetchRequest e retornando um array de Stations
     func fetchAllStations() -> [Station] {
-        
         var allStations: [Station] = []
         
         do {
@@ -33,6 +34,7 @@ public class StationDAO {
         return allStations
     }
     
+    //Criando uma Station
     func create(name: String, arrivalTime: NSDate, departureTime: NSDate) {
         let description = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)!
         let station = Station(entity: description, insertIntoManagedObjectContext: managedContext)
@@ -44,11 +46,13 @@ public class StationDAO {
         saveContext()
     }
     
+    //Removendo apenas uma Station
     func remove(station: Station) {
         managedContext.deleteObject(station)
         saveContext()
     }
     
+    //Buscando e removendo todas Stations atraves do NSFetchRequest
     func removeAll() {
         let fetchRequest = NSFetchRequest(entityName: "Station")
         fetchRequest.returnsObjectsAsFaults = true
@@ -68,6 +72,7 @@ public class StationDAO {
         saveContext()
     }
 
+    //Salvando contexto do aplicativo com tratamento de erros
     func saveContext() {
         do {
             try managedContext.save()

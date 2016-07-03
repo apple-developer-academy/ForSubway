@@ -2,8 +2,8 @@
 //  Type.swift
 //  Tripbook
 //
-//  Created by Pedro Albuquerque on 08/05/16.
-//  Copyright © 2016 Pedro Albuquerque. All rights reserved.
+//  Created by Gabriel Cavalcante on 27/06/16.
+//  Copyright © 2016 Gabriel Cavalcante. All rights reserved.
 //
 
 import Foundation
