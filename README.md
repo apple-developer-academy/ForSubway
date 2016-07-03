@@ -5,14 +5,14 @@
 </p>
 
 <p align="center">
-   Simple example on how to work with local notifications in *iOS*.
+   Simple example on how to work with local notifications in iOS.
 </p>
 
 ## Table of Contents
 
 - [Introduction](#introduction)
 - [What Is Used](#what-is-used)
-- [Description](#example)
+- [Description](#description)
 - [More Help](#more-help)
 
 ## Introduction
@@ -34,7 +34,7 @@ The sample was originally used in [this workshop](https://speakerdeck.com/ytheco
 
 <p align="center">
   <a href="">
-    <img alt="Logo" src="logo.png" width="450px">
+    <img alt="Logo" src="app.png" width="450px">
   </a>
 </p>
 
