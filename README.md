@@ -15,10 +15,12 @@ This code shows how to create easily Local Notification for *iOS* using Swift 2.
 
 ## What Is Used
 
-- UILocalNotification
-- UITableView
-- UITextField
-- Core Data
+- [UILocalNotification](https://developer.apple.com/library/ios/documentation/iPhone/Reference/UILocalNotification_Class/)
+- [UITableView](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITableView_Class/)
+- [UITextField](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextField_Class/)
+- [UIDatePicker](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDatePicker_Class/)
+- [Core Data](https://developer.apple.com/library/watchos/documentation/Cocoa/Conceptual/CoreData/index.html)
+- Other simple classes
 
 ## Example
 
