@@ -18,12 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
+        registerLocalNotification()
+        createLocalNotification()
+        
         return true
     }
     
     /*
         Registrar UILocalNotification com UIUserNotificationSettings
      */
+    
+    func registerLocalNotification() {
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: NSSet(object: createAlertAction()) as? Set<UIUserNotificationCategory>)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+    }
     
     /*
         Criar simples UILocalNotification
@@ -36,6 +45,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         - alertAction
         - category
      */
+    
+    func category() -> String {
+        return "CATEGORY_ACTION"
+    }
+    
+    func createLocalNotification() {
+        let localNotification = UILocalNotification()
+        localNotification.alertAction = "Open"
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+        localNotification.alertBody = "Notification's working. Everything is fine."
+        localNotification.alertTitle = "Notification Example"
+        localNotification.applicationIconBadgeNumber = (UIApplication.sharedApplication().scheduledLocalNotifications?.count)! + 1
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        localNotification.userInfo = ["message" : "Everyone is Happy!"]
+        localNotification.category = category()
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
     
     /*
         Criar UIMutableUserNotificationAction para a UIMutableUserNotificationCategory/Tipo de demonstracao das Actions
@@ -59,9 +86,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case open = "OPEN"
     }
     
+    func createAlertAction() -> UIMutableUserNotificationCategory {
+        let actionOpen = UIMutableUserNotificationAction()
+        actionOpen.identifier = Actions.open.rawValue
+        actionOpen.title = "Open"
+        actionOpen.activationMode = UIUserNotificationActivationMode.Background
+        actionOpen.destructive = false
+        actionOpen.authenticationRequired = false
+        
+        let actionCancel = UIMutableUserNotificationAction()
+        actionCancel.identifier = Actions.cancel.rawValue
+        actionCancel.title = "Cancel"
+        actionCancel.activationMode = UIUserNotificationActivationMode.Background
+        actionCancel.destructive = true
+        actionCancel.authenticationRequired = false
+        
+        let categories = UIMutableUserNotificationCategory()
+        categories.identifier = category()
+        categories.setActions([actionOpen, actionCancel], forContext: UIUserNotificationActionContext.Minimal)
+        
+        return categories
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        if notification.category == category() {
+            let actions: Actions = Actions(rawValue: identifier!)!
+            
+            switch actions {
+            case Actions.open:
+                print("Open")
+                break
+            case Actions.cancel:
+                print("Cancel")
+                break
+            }
+        }
+        completionHandler()
+    }
+    
     /*
         Criar simples UIAlertController para demonstrar userInfo com didReceiveLocalNotification
      */
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -75,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        //application.applicationIconBadgeNumber = 0
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
