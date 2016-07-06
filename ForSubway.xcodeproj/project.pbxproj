@@ -108,6 +108,14 @@
 			name = PopDatePicker;
 			sourceTree = "<group>";
 		};
+		08B3716B1D2CB4E40023F483 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */,
+			);
+			name = DAO;
+			sourceTree = "<group>";
+		};
 		7138FC931D2197AF00644998 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +143,7 @@
 				71C1EEEE1D231B04003E0B71 /* Model */,
 				71C1EEEF1D231B0C003E0B71 /* View */,
 				71C1EEF01D231B15003E0B71 /* Controller */,
+				08B3716B1D2CB4E40023F483 /* DAO */,
 				7138FCA31D2197B100644998 /* Main.storyboard */,
 				7138FCA91D2197B100644998 /* Assets.xcassets */,
 				7138FCAB1D2197B100644998 /* LaunchScreen.storyboard */,
@@ -166,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				7138FCE11D219B0F00644998 /* Station.swift */,
-				716F1AAD1D22E7BF00E5B856 /* StationDAO.swift */,
+				084E18991D2235E90009B517 /* Notification.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,7 +193,6 @@
 		71C1EEF01D231B15003E0B71 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				084E18991D2235E90009B517 /* Notification.swift */,
 				082492C01D21FF0A00C86F05 /* PopDatePicker */,
 			);
 			name = Controller;

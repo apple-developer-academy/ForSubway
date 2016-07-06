@@ -84,7 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             /////////////Cancelar a notificacao da Station selecionada//////////////
             
-            
+            notification.cancelNotification(station.arrivalTime, departure: station.departureTime)
             
             ////////////////////////////////////////////////////////////////////////
             
@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             /////////////Cancelar todas notificacoes///////////////
             
-            
+            self.notification.cancelAllNotifications()
             
             ///////////////////////////////////////////////////////
             

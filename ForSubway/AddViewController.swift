@@ -73,6 +73,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
             
             ///////////////Criar a notificacao da hora de chegada e de partida///////////////
             
+            notification.createNotification(arrivalTime!, departure: departureTime!)
             
             
             /////////////////////////////////////////////////////////////////////////////////
